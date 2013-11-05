@@ -4,42 +4,71 @@
  * @author    Philippe Lafrance
  * @link      http://gintonicweb.com
  */
+ 
+$add = $this->Html->url(array(
+    'plugin' => 'gtw_files',
+    'controller' => 'files',
+    'action' => 'add',
+));
+$add .= '/' . implode('/',$this->params['pass']);
 ?>
-<div id='addFileModal' class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
-    <form id="ControllerAddForm" method="post" enctype="multipart/form-data" target="upload_target" action="/files/add">
-    
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h3 id="myModalLabel">Add file</h3>
-        </div>
+<div class="modal fade" id="file-modal" tabindex="-1" role="dialog" aria-labelledby="file-modal-label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
         
-        <div class="modal-body">
+        <form id="ControllerAddForm" method="post" enctype="multipart/form-data" target="upload_target" action="<?php echo $add; ?>" role="form">
         
         <?php
-            
-            echo $this->Form->input('File.tmpFile', array(
-                'type' => 'file',
-                'label' => 'File',
+            echo $this->Form->create(null, array(
+                'url' => array(
+                    'plugin' => 'gtw_files',
+                    'controller' => 'files',
+                    'action' => 'add'
+                ),
+                'inputDefaults' => array(
+                    'div' => 'form-group',
+                    'wrapInput' => false,
+                    'class' => 'form-control'
+                ),
+                'enctype' => 'multipart/form-data',
+                'target' => 'upload_target'
             ));
-            
-            echo $this->Form->input('File.title', array(
-                'type' => 'text',
-                'label' => 'Title',
-            ));
-            
         ?>
-
-        </div>
         
-        <div class="modal-footer">
-            <input class="btn btn-primary" type="submit" value="Enregistrer">
-            <button class="btn" data-dismiss="modal" aria-hidden="true">Annuler</button>
-        </div>
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="file-modal-label">Upload File</h4>
+            </div>
+            <div class="modal-body">
+            <?php
+                echo $this->Form->input('File.title', array(
+                    'type' => 'text',
+                    'label' => 'Title',
+                ));
+                
+                echo $this->Form->input('File.tmpFile', array(
+                    'type' => 'file',
+                    'label' => false,
+                    'beforeInput' => '<div class="input-group"><span class="input-group-btn"><span class="btn btn-primary btn-file">Browse ',
+                    'afterInput' => '</span></span><input id="filename" type="text" class="form-control" placeholder="No file Uploaded" readonly></div>'
+                ));
+            ?>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <input type="submit" value="Upload" class="btn btn-primary" disabled="disabled"></button>
+            </div>
+            
+        </form>
     
-    </form>
-    
-    <!-- Older browsers won't let us use ajax for file uploads. This is the hack -->
-    <iframe id="upload_target" name="upload_target" style="width:0;height:0;border:0px solid #fff;"></iframe>
-    
-</div>
+        <!-- Older browsers won't let us use ajax for file uploads. This is the hack -->
+        <iframe id="upload_target" name="upload_target" style="width:0;height:0;border:0px solid #fff;"></iframe>   
+        
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<script>
+    require(['files/feedback']);
+</script>
