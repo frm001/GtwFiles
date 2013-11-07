@@ -19,7 +19,6 @@ class FilesController extends AppController {
     function add() {
         $this->layout = 'ajax';
         if ($this->request->is('post')) {
-            
             if (is_uploaded_file($this->request->data['File']['tmpFile']['tmp_name'])) {
                 $this->request->data['File'] = $this->File->moveUploaded(
                     $this->request->data['File'], 
@@ -27,10 +26,6 @@ class FilesController extends AppController {
                 );
                 $this->File->Create();
                 if ($this->File->save($this->request->data)){
-                    /*$this->Session->setFlash('File added successfully', 'alert', array(
-                        'plugin' => 'BoostCake',
-                        'class' => 'alert-success'
-                    ));*/
                     $this->set('file', $this->File->read(null, $this->File->getLastInsertId()));
                     $this->render('completed');
                 } else {
@@ -46,19 +41,14 @@ class FilesController extends AppController {
         $this->set('file', $this->File->read(null, $id));
     }
     
-    public function browse() {
-        $this->layout = 'ajax';
-        $this->set('files', $this->paginate());
-    }
-    
     public function delete($id) {
         $file = $this->File->findById($id);
-        $filepath =   getcwd() . '\app\webroot\files\uploads\\' . $file['File']['filename'];
-        unlink($filepath);
+        unlink($this->File->getPath($file['File']['filename']));
+        
         if ($this->File->delete($id)) {
             $this->Session->setFlash('File has been deleted');
         }
-        $this->redirect('/admin/files/index/');
+        $this->redirect(array('action' => 'index'));
     }
     
     public function index() {

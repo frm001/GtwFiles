@@ -28,7 +28,7 @@ class File extends AppModel {
         
         $file = fopen($tmpFile['tmpFile']['tmp_name'], "rb");
         $data = fread($file, $fileInfo['size']);
-        file_put_contents( $this->createFilePath($fileInfo['filename']) , $data);
+        file_put_contents( $this->getPath($fileInfo['filename']) , $data);
         
         $fileInfo['user_id'] = $userId;
         return $fileInfo;
@@ -39,10 +39,7 @@ class File extends AppModel {
         return date("d_m_Y_G.i.s") . '_' . $userId . '.' . $ext;
     }
     
-    public function createFilePath($filename){
+    public function getPath($filename){
         return WWW_ROOT . '\files\uploads\\' . $filename;
     }
-    
-    
-    
 }
