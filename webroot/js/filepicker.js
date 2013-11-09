@@ -1,4 +1,4 @@
-require(['jquery','basepath'], function ($, basepath, spin) {
+require(['jquery','basepath'], function ($, basepath) {
     
     $('.upload').click(function(){
         $('.upload').button('loading');

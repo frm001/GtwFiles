@@ -20,17 +20,18 @@ class File extends AppModel {
     public function moveUploaded($tmpFile, $userId){
         
         // fetch data
+        $fileInfo['user_id'] = $userId;
         $fileInfo['size'] = $tmpFile['tmpFile']['size'];
         $fileInfo['type'] = $tmpFile['tmpFile']['type'];
         $fileInfo['title'] = $tmpFile['title'];
         $fileInfo['ext'] = pathinfo($tmpFile['tmpFile']['name'], PATHINFO_EXTENSION);
         $fileInfo['filename'] = $this->createFileName($fileInfo['ext'], $userId);
         
+        // move file
         $file = fopen($tmpFile['tmpFile']['tmp_name'], "rb");
         $data = fread($file, $fileInfo['size']);
         file_put_contents( $this->getPath($fileInfo['filename']) , $data);
         
-        $fileInfo['user_id'] = $userId;
         return $fileInfo;
     }
     
