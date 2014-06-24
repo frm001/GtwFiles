@@ -1,5 +1,4 @@
-require(['jquery','basepath'], function ($, basepath) {
-    
+require(['jquery','basepath'], function ($, basepath) {    
     $('.upload').click(function(){
         $('.upload').button('loading');
         var callback = $(this).attr('data-upload-callback');
@@ -20,4 +19,30 @@ require(['jquery','basepath'], function ($, basepath) {
     
     // Global so it can be called outside of require.js
     window.uploadComplete = uploadComplete;
+    //Allow to Edit Title
+    $('.editTitle').on('click',function(){
+        $('#gtwFileid').val($(this).data('pk'));
+        $('#gtwFileTitle').val($(this).data('value'));
+        $('.modal-footer').children('input[type="submit"]').show();
+        $('.modal-footer').children('button.btn-primary').hide();
+        $('#editTitleModal').modal();
+    });
+    $('#gtwFileUpdateForm').on('submit',function (e){
+        $('.modal-footer').children('input[type="submit"]').hide();
+        $('.modal-footer').children('button').show();
+        e.preventDefault();
+        $.ajax({
+            url: $(this).prop('action'),
+            type: 'POST',
+            dataType:'json',
+            data:$(this).serialize(),
+            success: function (response) {
+                if(response.status=='success'){
+                    $('#editTitleModal').modal('hide');
+                    $('#title_'+response.id).html(response.value);
+                    $('[data-pk="'+response.id+'"').data('value',response.value);
+                }
+            }
+        });	
+    });
 });

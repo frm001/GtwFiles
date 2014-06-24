@@ -4,7 +4,8 @@
  * @author    Philippe Lafrance
  * @link      http://gintonicweb.com
  */
-
+App::uses('Folder', 'Utility');
+App::uses('File', 'Utility');
 class File extends AppModel {
     
     public $belongsTo = 'User';
@@ -41,6 +42,16 @@ class File extends AppModel {
     }
     
     public function getPath($filename){
-        return WWW_ROOT . '\files\uploads\\' . $filename;
+        $path = WWW_ROOT . 'files'.DS.'uploads'.DS ;
+        //Check folder and if not exist then create folder
+        $dir = new Folder($path,true,'0777');
+        return  $path. $filename;
+    }
+    public function getUrl($filename){
+        return 'files/uploads/'.$filename;
+    }
+    public function deleteFile($filename){        
+        $file = new File($this->getPath($filename));
+        $file->delete();
     }
 }
