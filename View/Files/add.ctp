@@ -50,8 +50,9 @@ $add .= '/' . implode('/',$this->params['pass']);
                 echo $this->Form->input('File.tmpFile', array(
                     'type' => 'file',
                     'label' => false,
-                    'beforeInput' => '<div class="input-group"><span class="input-group-btn"><span class="btn btn-primary btn-file">Browse ',
-                    'afterInput' => '</span></span><input id="filename" type="text" class="form-control" placeholder="No file Uploaded" readonly></div>'
+                    'style' => 'display:none',
+                    'beforeInput' => '<div class="input-group"><span class="input-group-btn"><label class="btn btn-primary btn-file" for="FileTmpFile">Browse ',
+                    'afterInput' => '</label></span><input id="filename" type="text" class="form-control" placeholder="No file Uploaded" readonly></div>'
                 ));
             ?>
             </div>
