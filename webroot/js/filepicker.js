@@ -2,16 +2,26 @@ require(['jquery','basepath'], function ($, basepath) {
     $('.upload').click(function(){
         $('.upload').button('loading');
         var callback = $(this).attr('data-upload-callback');
-        $.get( basepath+"gtw_files/files/add/"+callback, function(data){
+        var multipleFiles = $(this).attr('data-multiple');
+        var dirname = $(this).attr('data-dir');
+        var dirurl = "";
+        if (typeof dirname !== 'undefined'){
+            dirurl = "/dir:"+dirname;
+        }
+        
+        $.get( basepath+"gtw_files/files/add/"+callback+dirurl, function(data){
             $('#modal-loader').html(data);
             $('#file-modal').modal('show');
-            $('.upload').button('reset');
+            $('.upload').button('reset');            
+       
+            if (multipleFiles === 'true'){
+                $('#FileTmpFile').prop('multiple','multiple');
+            }
         });
     });
-    
     // Function called when an image is added. id is the file id in the database
     function uploadComplete(id, path, callbackModule){
-        $('#file-modal').modal('hide');
+        $('#file-modal').modal('hide');        
         require([callbackModule], function(callback){
             callback(id, path);
         });
@@ -43,6 +53,6 @@ require(['jquery','basepath'], function ($, basepath) {
                     $('[data-pk="'+response.id+'"').data('value',response.value);
                 }
             }
-        });	
+        });    
     });
 });
