@@ -18,7 +18,7 @@
                 <?php if(!empty($userId)){?>
                 <button type="button" class="btn btn-default" onclick="javascript:history.go(-1);"><i class="fa fa-reply"></i> Back</button>
                 <?php }else{?>
-                    <button type="button" class="btn btn-primary upload" data-loading-text="Loading..." data-upload-callback="files/index"><i class="fa fa-upload"></i> Upload file</button>
+                    <button type="button" class="btn btn-primary upload" data-multiple="true" data-loading-text="Loading..." data-upload-callback="files/index"><i class="fa fa-upload"></i> Upload file</button>
                 <?php }?>
             </div>
         </div>

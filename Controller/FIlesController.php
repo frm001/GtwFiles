@@ -65,7 +65,11 @@ class FilesController extends AppController
     function get_row($id)
     {
         $this->layout = 'ajax';
-        $this->set('file', $this->File->read(null, $id));
+        $fileIds = explode(', ', $id);
+		foreach ($fileIds as $key => $id) {
+			$files[]= $this->File->read(null, $id);
+		}
+        $this->set('files',$files);
     }
 
     public function delete($id)

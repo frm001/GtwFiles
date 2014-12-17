@@ -8,7 +8,7 @@ class GtwFileSchema extends CakeSchema {
 	public function after($event = array()) {
 	}
 
-	public $users = array(
+	public $files = array(
 		'id' => array('type' => 'integer', 'null' => false, 'default' => null, 'length' => 10, 'key' => 'primary'),
 		'user_id' => array('type' => 'integer', 'null' => false, 'default' => null),
 		'title' => array('type' => 'string', 'null' => false, 'default' => null, 'length' => 50, 'collate' => 'latin1_swedish_ci', 'charset' => 'latin1'),
