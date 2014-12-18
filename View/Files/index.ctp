@@ -11,21 +11,21 @@
 <div id = "upload-alert"></div>
 <div id="modal-loader"></div>
 <div class="panel panel-default">
-	<div class="panel-heading">
-		<div class="row">
-			<div class="col-md-8"><h3 style='margin-top:0px'>Files</h3></div>
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-md-8"><h3 style='margin-top:0px'>Files</h3></div>
             <div class="col-md-4 text-right">
                 <?php if(!empty($userId)){?>
                 <button type="button" class="btn btn-default" onclick="javascript:history.go(-1);"><i class="fa fa-reply"></i> Back</button>
                 <?php }else{?>
-                    <button type="button" class="btn btn-primary upload" data-loading-text="Loading..." data-upload-callback="files/index"><i class="fa fa-upload"></i> Upload file</button>
+                    <button type="button" class="btn btn-primary upload" data-multiple="true" data-loading-text="Loading..." data-upload-callback="files/index"><i class="fa fa-upload"></i> Upload file</button>
                 <?php }?>
             </div>
-		</div>
-	</div>    
+        </div>
+    </div>    
     <table class="table table-hover table-striped table-bordered" id="all-files">
-		<thead>
-			<tr>
+        <thead>
+            <tr>
                 <th><?php echo $this->Paginator->sort('id'); ?></th>
                 <th><?php echo $this->Paginator->sort('title'); ?></th>
                 <th><?php echo $this->Paginator->sort('filename'); ?></th>
@@ -35,23 +35,23 @@
                     <th><?php echo $this->Paginator->sort('User.first','Owner'); ?></th>
                 <?php }?>
                 <th><?php echo $this->Paginator->sort('created', 'Added'); ?></th>
-				<th class='text-center'>Action</th>
-			</tr>
-		</thead>
-		<tbody>
-			<?php if(empty($files)){?>
-				<tr>
-					<td colspan='7' class='text-warning'>No file uploaded yet.</td>
-				</tr>
-			<?php 
+                <th class='text-center'>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php if(empty($files)){?>
+                <tr>
+                    <td colspan='7' class='text-warning'>No file uploaded yet.</td>
+                </tr>
+            <?php 
                 }else{
                     foreach ($files as $file){
                         echo $this->element('filelist',array('file'=>$file));
                     }
                 }
             ?>
-		</tbody>
-	</table>	
+        </tbody>
+    </table>    
 </div>
 <div class="modal fade" id="editTitleModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-sm">
