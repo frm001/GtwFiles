@@ -45,7 +45,7 @@ class File extends AppModel
         return date("d_m_Y_G.i.s") . '_' . $userId.$count . '.' . $ext;
     }
     
-    public function getPath($filename,$dirName)
+    public function getPath($filename,$dirName = '')
     {
         if(empty($dirName)){
             $path = WWW_ROOT . 'files'.DS.'uploads'.DS ;
