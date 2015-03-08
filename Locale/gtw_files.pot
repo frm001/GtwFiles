@@ -1,0 +1,112 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2015-03-08 19:09-0400\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+#: Controller/FilesController.php:81
+msgid "File has been deleted"
+msgstr ""
+
+#: Controller/FilesController.php:117
+msgid "File Not Found"
+msgstr ""
+
+#: View/Elements/filelist.ctp:18
+msgid "Delete this file"
+msgstr ""
+
+#: View/Elements/filelist.ctp:18
+msgid "Are you sure? You want to delete this file."
+msgstr ""
+
+#: View/Files/add.ctp:41
+msgid "Upload File"
+msgstr ""
+
+#: View/Files/add.ctp:47
+#: View/Files/browse.ctp:19
+#: View/Files/index.ctp:30
+msgid "Title"
+msgstr ""
+
+#: View/Files/add.ctp:65
+#: View/Files/browse.ctp:41
+#: View/Files/index.ctp:73
+msgid "Close"
+msgstr ""
+
+#: View/Files/browse.ctp:12
+msgid "File List"
+msgstr ""
+
+#: View/Files/browse.ctp:20
+msgid "Owner"
+msgstr ""
+
+#: View/Files/browse.ctp:21
+msgid "Midified"
+msgstr ""
+
+#: View/Files/index.ctp:16
+msgid "Files"
+msgstr ""
+
+#: View/Files/index.ctp:19
+msgid "Back"
+msgstr ""
+
+#: View/Files/index.ctp:21
+msgid "Loading"
+msgstr ""
+
+#: View/Files/index.ctp:21
+msgid "Upload file"
+msgstr ""
+
+#: View/Files/index.ctp:31
+msgid "File Name"
+msgstr ""
+
+#: View/Files/index.ctp:32
+msgid "Extension"
+msgstr ""
+
+#: View/Files/index.ctp:33
+msgid "Size"
+msgstr ""
+
+#: View/Files/index.ctp:37
+msgid "Added"
+msgstr ""
+
+#: View/Files/index.ctp:38
+msgid "Action"
+msgstr ""
+
+#: View/Files/index.ctp:44
+msgid "No file uploaded yet."
+msgstr ""
+
+#: View/Files/index.ctp:62
+msgid "Update Title"
+msgstr ""
+
+#: View/Files/index.ctp:71
+msgid "Please wait"
+msgstr ""
+
+#: View/Files/index.ctp:72
+msgid "Save"
+msgstr ""
+

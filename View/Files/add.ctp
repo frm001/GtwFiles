@@ -38,13 +38,13 @@ $add .= '/' . implode('/',$this->params['pass']);
         
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="file-modal-label">Upload File</h4>
+                <h4 class="modal-title" id="file-modal-label"><?php echo __d('gtw_files','Upload File');?></h4>
             </div>
             <div class="modal-body">
             <?php
                 echo $this->Form->input('File.title', array(
                     'type' => 'text',
-                    'label' => 'Title',
+                    'label' => __d('gtw_files','Title')
                 ));
                 
                 echo $this->Form->input('File.tmpFile', array(
@@ -62,7 +62,7 @@ $add .= '/' . implode('/',$this->params['pass']);
             ?>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo __d('gtw_files','Close');?></button>
                 <input type="submit" value="Upload" class="btn btn-primary" disabled="disabled"></button>
             </div>
             

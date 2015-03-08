@@ -78,7 +78,7 @@ class FilesController extends AppController
         if ($this->File->delete($id)) {
             //Delete File
             $this->File->deleteFile($file['File']['filename']);
-            $this->Session->setFlash(__('File has been deleted'), 'alert', array(
+            $this->Session->setFlash(__d('gtw_files','File has been deleted'), 'alert', array(
                 'plugin' => 'BoostCake',
                 'class' => 'alert-success'
             ));
@@ -114,7 +114,7 @@ class FilesController extends AppController
             return $this->response->file($filename, array('download' => true));
             exit;
         }
-        $this->Session->setFlash(__('File Not Found'), 'alert', array(
+        $this->Session->setFlash(__d('gtw_files', 'File Not Found'), 'alert', array(
             'plugin' => 'BoostCake',
             'class' => 'alert-danger'
         ));

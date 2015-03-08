@@ -15,7 +15,7 @@
         <span class="text-center">
             <?php echo $this->Html->actionIcon('fa fa-download', 'download', $file['File']['filename']);?>
             &nbsp;
-            <?php echo $this->Html->link('<i class="fa fa-trash-o"> </i>',array('controller'=>'files','action'=>'delete',$file['File']['id']),array('role'=>'button','escape'=>false,'title'=>'Delete this file'),'Are you sure? You want to delete this file.');?>
+            <?php echo $this->Html->link('<i class="fa fa-trash-o"> </i>',array('controller'=>'files','action'=>'delete',$file['File']['id']),array('role'=>'button','escape'=>false,'title'=>__d('gtw_files','Delete this file')), __d('gtw_files','Are you sure? You want to delete this file.'));?>
         </span>
     </td>
 </tr>
